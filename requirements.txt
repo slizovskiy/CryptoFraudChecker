@@ -2,3 +2,4 @@ pandas
 protobuf
 python_magic
 streamlit
+google-generativeai
