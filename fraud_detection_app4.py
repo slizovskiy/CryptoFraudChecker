@@ -1,3 +1,6 @@
+###Crypto-Fraud detection App. Criteria are selected from the regulators  
+#### Authors: Samuel Chan, Sergey Slizovskiy, Aseem Pahuja, Grok and Gemini
+
 import streamlit as st
 import google.generativeai as genai
 import os
@@ -416,7 +419,7 @@ def process_response(response_text):
 
 
 # Streamlit app
-st.title("Crypto Project Fraud Detection App \n Authors: Samuel Chan, Sergey Slizovskiy, Aseem Pahuja, Grok and Gemini")
+st.title("Crypto Project Fraud Detection App")
 
 # API key input
 st.write("Enter your Gemini API key. Get a free key from [Google AI Studio](https://aistudio.google.com/app/apikey).")
