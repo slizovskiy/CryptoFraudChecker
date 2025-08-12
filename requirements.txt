@@ -1,0 +1,4 @@
+pandas
+protobuf
+python_magic
+streamlit
