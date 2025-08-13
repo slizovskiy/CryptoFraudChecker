@@ -503,7 +503,7 @@ with tab1:
             response = model.generate_content([gemini_file, user_prompt])
             json_str = process_response(response.text)
 
-# Parse response
+            # Parse response
             try:
                 evaluation_json = json.loads(json_str)
                 whitepaper_name = evaluation_json.get("whitepaper_name", safe_filename.replace('.pdf', '').replace('.txt', ''))
@@ -511,13 +511,9 @@ with tab1:
                 for key, value in evaluation_json.items():
                     if key != "whitepaper_name":
                         if isinstance(value, list):
-                            for item in value:
-                                if isinstance(item, dict) and "ID" in item:
-                                    evaluations.append(item)
-                                else:
-                                    st.warning(f"Skipping invalid item for key {key}: {item}")
+                            evaluations.extend(value)
                         else:
-                            st.warning(f"Skipping invalid value for key {key}: {value}")
+                            st.warning(f"Expected a list for key {key}, got {type(value)}. Skipping: {value}")
             except json.JSONDecodeError as e:
                 st.error(f"Invalid JSON response from Gemini: {e}. Unable to process evaluation.")
                 if os.path.exists(temp_path):
@@ -552,7 +548,7 @@ with tab2:
             response = model.generate_content([user_prompt])
             json_str = process_response(response.text)
 
-# Parse response
+            # Parse response
             try:
                 evaluation_json = json.loads(json_str)
                 whitepaper_name = evaluation_json.get("whitepaper_name", url.split('/')[-1] or "unknown_project")
@@ -560,13 +556,9 @@ with tab2:
                 for key, value in evaluation_json.items():
                     if key != "whitepaper_name":
                         if isinstance(value, list):
-                            for item in value:
-                                if isinstance(item, dict) and "ID" in item:
-                                    evaluations.append(item)
-                                else:
-                                    st.warning(f"Skipping invalid item for key {key}: {item}")
+                            evaluations.extend(value)
                         else:
-                            st.warning(f"Skipping invalid value for key {key}: {value}")
+                            st.warning(f"Expected a list for key {key}, got {type(value)}. Skipping: {value}")
                 st.success(f"URL content evaluated successfully.")
             except json.JSONDecodeError as e:
                 st.error(f"Invalid JSON response from Gemini: {e}. Unable to process evaluation.")
