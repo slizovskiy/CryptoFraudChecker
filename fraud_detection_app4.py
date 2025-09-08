@@ -496,7 +496,7 @@ with tab1:
         # Upload to Gemini and evaluate
         try:
             gemini_file = genai.upload_file(temp_path)
-            st.success(f"File {safe_filename} uploaded to Gemini for evaluation.")
+            st.success(f"File {safe_filename} uploaded to Gemini for evaluation. \n  Please, wait for 40 seconds for the result to appear")
             model = genai.GenerativeModel(model_name='gemini-2.5-pro', system_instruction=file_system_prompt)
             criteria_str = json.dumps({"criteria": criteria_list}, indent=2)
             user_prompt = f"Evaluate the attached whitepaper against the following criteria:\n{criteria_str}"
@@ -540,7 +540,8 @@ with tab2:
             st.error("Invalid URL format. Please enter a valid URL starting with http:// or https://")
             st.stop()
 
-        # Evaluate URL content with Gemini
+        st.success(f"URL {url} uploaded to Gemini for evaluation. \n  Please, wait for 40 seconds for the result to appear")  
+      # Evaluate URL content with Gemini
         try:
             model = genai.GenerativeModel(model_name='gemini-2.5-pro', system_instruction=url_system_prompt)
             criteria_str = json.dumps({"criteria": criteria_list}, indent=2)
