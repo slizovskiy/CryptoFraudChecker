@@ -605,7 +605,7 @@ if evaluations:
 
     # Display results
     st.subheader("Evaluation Results")
-    st.write(f"**Fraud Probability**: {prob:.4f}")
+    st.write(f"**Fraud Probability**: {prob:.3f}")
     st.write(f"**Fraud Result**: {is_fraud}")
     st.write("**Criteria deemed true (fraud indicators)**:")
     st.write(", ".join(fraud_criteria) if fraud_criteria else "None")
