@@ -10,6 +10,7 @@ import re
 import magic
 import pandas as pd
 
+model_name = 'gemini-3.0-flash'
 # Maximum file size (100MB in bytes)
 MAX_SIZE = 100 * 1024 * 1024  # 100MB
 
@@ -497,7 +498,7 @@ with tab1:
         try:
             gemini_file = genai.upload_file(temp_path)
             st.success(f"File {safe_filename} uploaded to Gemini for evaluation.")
-            model = genai.GenerativeModel(model_name='gemini-2.5-pro', system_instruction=file_system_prompt)
+            model = genai.GenerativeModel(model_name=model_name, system_instruction=file_system_prompt)
             criteria_str = json.dumps({"criteria": criteria_list}, indent=2)
             user_prompt = f"Evaluate the attached whitepaper against the following criteria:\n{criteria_str}"
             response = model.generate_content([gemini_file, user_prompt])
