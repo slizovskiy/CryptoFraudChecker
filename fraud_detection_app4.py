@@ -7,7 +7,7 @@ import os
 import json
 import math
 import re
-import magic
+#import magic
 import pandas as pd
 
 model_name = 'gemini-3.0-flash'
@@ -481,13 +481,13 @@ with tab1:
             st.error(f"{safe_filename} exceeds 100MB limit!")
             st.stop()
 
-        # Validate file content
-        mime_checker = magic.Magic(mime=True)
-        file_content = uploaded_file.read()
-        file_type = mime_checker.from_buffer(file_content)
-        if file_type not in ["application/pdf", "text/plain"]:
-            st.error(f"Invalid file type for {safe_filename}. Only PDF or TXT files are allowed.")
-            st.stop()
+        # # Validate file content
+        # mime_checker = magic.Magic(mime=True)
+        # file_content = uploaded_file.read()
+        # file_type = mime_checker.from_buffer(file_content)
+        # if file_type not in ["application/pdf", "text/plain"]:
+        #     st.error(f"Invalid file type for {safe_filename}. Only PDF or TXT files are allowed.")
+        #     st.stop()
 
         # Save uploaded file temporarily
         temp_path = f"temp_{safe_filename}"
