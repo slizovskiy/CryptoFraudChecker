@@ -1,2 +1,0 @@
-libmagic1
-libmagic-mgc

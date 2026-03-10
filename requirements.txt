@@ -1,5 +1,4 @@
 pandas>=2.2.0
 protobuf>=5.0.0
-python_magic
 streamlit>=1.42.0
 google-generativeai>=0.8.0
